@@ -51,4 +51,13 @@ public class ConsultasWS {
         String datos = pdao.edit(id, categoria, nombre, precio, mayoreo, oferta, cantidad);
         return datos;
     }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "Eliminar")
+    public Productos Eliminar(@WebParam(name = "id") int id) {
+        Productos p = pdao.delete(id);
+        return p;
+    }
 }

@@ -15,6 +15,8 @@ public class ProductosDAO implements Metodos{
     Conexion conn = new Conexion();
     int res;
     String error;
+    Productos p = new Productos();
+    
     @Override
     public List listar() {
     List<Productos> productoslista = new ArrayList();
@@ -42,7 +44,7 @@ public class ProductosDAO implements Metodos{
     @Override
     public Productos listaP(int id) {
     String sql = "select * from productos where id="+id;
-    Productos p = new Productos();
+    
     try{
         con = conn.getConection();
         ps=con.prepareStatement(sql);
@@ -111,7 +113,15 @@ public class ProductosDAO implements Metodos{
 
     @Override
     public Productos delete(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "delete from productos where id="+id;
+         try{
+                con = conn.getConection();
+                ps = con.prepareStatement(sql);
+                ps.executeUpdate();
+                }catch (Exception e){
+                
+                }
+    return p;
     }
     
 }
