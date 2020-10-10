@@ -20,9 +20,7 @@ import web.ProductosDAO;
 public class ConsultasWS {
     ProductosDAO  pdao = new ProductosDAO();
 
-    /**
-     * This is a sample web service operation
-     */
+
     @WebMethod(operationName = "lista")
     public List<Productos> lista() {
         List datos = pdao.listar();
@@ -34,27 +32,19 @@ public class ConsultasWS {
         return datos;
     }
 
-    /**
-     * Web service operation
-     */
+
     @WebMethod(operationName = "listaid")
     public Productos listaid(@WebParam(name = "id") int id) {
         Productos p = pdao.listaP(id);
         return p;
     }
 
-    /**
-     * Web service operation
-     */
     @WebMethod(operationName = "actualizar")
     public String actualizar(@WebParam(name = "id") int id, @WebParam(name = "categoria") String categoria, @WebParam(name = "nombre") String nombre, @WebParam(name = "precio") String precio, @WebParam(name = "mayoreo") String mayoreo, @WebParam(name = "oferta") String oferta, @WebParam(name = "cantidad") String cantidad) {
         String datos = pdao.edit(id, categoria, nombre, precio, mayoreo, oferta, cantidad);
         return datos;
     }
 
-    /**
-     * Web service operation
-     */
     @WebMethod(operationName = "Eliminar")
     public Productos Eliminar(@WebParam(name = "id") int id) {
         Productos p = pdao.delete(id);
